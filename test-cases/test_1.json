@@ -1,0 +1,31 @@
+{
+    "tour_request": {
+        "sections": [
+            {
+                "id" : 1,
+                "from": {"name": "Kiel"},
+                "to": {"name": "Leipzig"},
+                "distance": 480,
+                "duration": 6
+            }
+        ]
+    },
+    "base_price": {
+        "base": 100,
+        "per_distance": 4,
+        "per_duration": 2
+    },
+    "rules": [
+        {
+            "checks": [
+
+            ],
+            "modifiers": [
+                {
+                    "type": "FixAmount",
+                    "amount": 500
+                }
+            ]
+        }
+    ]
+}
