@@ -22,13 +22,17 @@ fn get_std_in() -> String {
 
     for line in stdin.lock().lines() {
         input += &line.unwrap();
+        input += &format!("\n");
     }
 
     input
 }
 
 fn main() {
-    let input = serde_json::from_str::<Input>(&get_std_in()).unwrap();
+    let input_string = get_std_in();
+    // println!("{}", input_string);
+
+    let input = serde_json::from_str::<Input>(&input_string).unwrap();
 
     let pricing = PriceComposition::from((
         &input.tour_request,

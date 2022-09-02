@@ -15,10 +15,10 @@ pub struct Rule {
 }
 
 impl Rule {
-    pub fn should_be_applied(&self) -> bool {
+    pub fn should_be_applied(&self, request: &TourRequest) -> bool {
         !self.checks
             .iter()
-            .any(|check_type| !check_type.applies())
+            .any(|check_type| !check_type.get_check().applies(request))
     }
 
     pub fn get_prices(&self, request: &TourRequest, pricing: &PriceComposition) -> Vec<Price> {
@@ -37,7 +37,7 @@ impl Rule {
 }
 
 pub trait RuleCheck {
-    fn applies(&self) -> bool;
+    fn applies(&self, request: &TourRequest) -> bool;
 }
 
 pub trait Modifier {

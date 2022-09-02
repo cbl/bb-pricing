@@ -6,7 +6,8 @@
                 "from": {"name": "Kiel"},
                 "to": {"name": "Leipzig"},
                 "distance": 480,
-                "duration": 6
+                "starts_at": "2022-09-01T16:58:02",
+                "ends_at": "2022-09-01T16:58:02"
             }
         ]
     },
@@ -18,12 +19,17 @@
     "rules": [
         {
             "checks": [
-
+                {
+                    "type": "Weekday",
+                    "value": {"type": "Multiple", "value": ["Monday", "Tuesday", "Thursday"]}
+                }
             ],
             "modifiers": [
                 {
                     "type": "FixAmount",
-                    "amount": 500
+                    "value": {
+                        "amount": 500
+                    }
                 }
             ]
         }

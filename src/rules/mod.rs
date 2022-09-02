@@ -5,7 +5,7 @@ use crate::rule::Modifier;
 use serde::Deserialize;
 
 #[derive(Deserialize)]
-#[serde(tag = "type")]
+#[serde(tag = "type", content = "value")]
 pub enum ModifierType {
     FixAmount(fix_amount::FixAmountModifier)
 }

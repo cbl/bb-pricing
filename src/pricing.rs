@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::rule::Rule;
 use crate::request::TourRequest;
 
-pub type Amount = i32;
+pub type Amount = i64;
 
 #[derive(Deserialize)]
 pub struct BasePrice {
@@ -89,7 +89,7 @@ impl From<(&TourRequest, BasePrice)> for PriceComposition {
 
             // price per duration
             pricing.push(Price::new(
-                base_price.per_duration * section.duration, 
+                base_price.per_duration * section.get_duration().num_hours(), 
                 PriceType::PerDuration,
                 format!("Price/Duration for section {}", section.id).to_string())
             );
@@ -109,7 +109,7 @@ impl From<(&TourRequest, BasePrice, Vec<Rule>)> for PriceComposition {
                 return;
             }
 
-            if !rule.should_be_applied() {
+            if !rule.should_be_applied(request) {
                 return;
             }
 
