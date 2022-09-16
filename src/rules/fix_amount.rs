@@ -8,7 +8,7 @@ pub struct FixAmountModifier {
 }
 
 impl Modifier for FixAmountModifier {
-    fn apply(&self, request: &TourRequest, pricing: &PriceComposition) -> Vec<Price> {
+    fn apply(&self, _: &TourRequest, pricing: &PriceComposition) -> Vec<Price> {
         vec![
             Price {
                 amount: self.amount - pricing.get_amount(),

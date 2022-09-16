@@ -1,9 +1,9 @@
-use chrono::{DateTime, Local, Utc, Duration, NaiveDateTime};
+use chrono::{Duration, NaiveDateTime};
 use serde::{Deserialize};
 
 #[derive(Deserialize)]
 pub struct Location {
-    name: String
+    pub name: String
 }
 
 #[derive(Deserialize)]
@@ -26,4 +26,16 @@ impl Section {
 #[derive(Deserialize)]
 pub struct TourRequest {
     pub sections: Vec<Section>,
+}
+
+impl TourRequest {
+    pub fn new() -> TourRequest {
+        TourRequest { sections: Vec::new() }
+    }
+}
+
+impl From<Vec<Section>> for TourRequest {
+    fn from(sections: Vec<Section>) -> TourRequest {
+        TourRequest { sections }
+    }
 }
