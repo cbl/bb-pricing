@@ -20,8 +20,8 @@
         {
             "checks": [
                 {
-                    "type": "Weekday",
-                    "value": {"type": "Multiple", "value": ["Monday", "Tuesday", "Thursday"]}
+                    "type": "Weekdays",
+                    "value": {"weekdays": ["Monday", "Tuesday", "Thursday"]}
                 }
             ],
             "modifiers": [
